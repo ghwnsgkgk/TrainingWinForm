@@ -38,53 +38,63 @@ namespace _20200620_디비연동하기
         }
 
         private void LoginProcess()
-        
+
         {
             //if(TxtuserID. Text == null || TxtuserID.Text == "" || TxtPassword.Text == null || TxtPassword.Text == "")//간단하게하는방법
-            if(string.IsNullOrEmpty(TxtuserID.Text)||string.IsNullOrEmpty(TxtPassword.Text))
+            if (string.IsNullOrEmpty(TxtuserID.Text) || string.IsNullOrEmpty(TxtPassword.Text))
             {
                 MetroMessageBox.Show(this, "아이디/패스워드를 입력하세요", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string strUserId = string.Empty; //??????????????????????이게 왜
-            using (SqlConnection conn = new SqlConnection(strConnString))   //DB연결 공식 연결 변수선언 
+            try
             {
-                conn.Open();  //변수로 문을 열고 
-                SqlCommand cmd = new SqlCommand(); // 명령 변수 선언 
-                cmd.Connection = conn;    // 명령변수랑 연결변수 연결!!
-                cmd.CommandText = "SELECT userID " +    //명령변수에 명령어 입력 -쿼리문
-                                  " FROM dbo.userTbl " +
-                                  " WHERE userID = @userID AND password =@password ";
-               //아이디
-                SqlParameter parmUserId = new SqlParameter("@userID",SqlDbType.VarChar,12);
-                parmUserId.Value = TxtuserID.Text;
-                cmd.Parameters.Add(parmUserId);
-                //비밀번호
-                SqlParameter parmpassword = new SqlParameter("@password", SqlDbType.VarChar, 12);
-                parmpassword.Value = TxtPassword.Text;
-                cmd.Parameters.Add(parmpassword);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                if (strUserId != "")
+                using (SqlConnection conn = new SqlConnection(strConnString))   //DB연결 공식 연결 변수선언 
                 {
-                    strUserId = reader["userID"].ToString(); //??????????????
-                    MetroMessageBox.Show(this, "접속성공", " 로그인");
-                    this.Close();
+                    conn.Open();  //변수로 문을 열고 
+                    SqlCommand cmd = new SqlCommand(); // 명령 변수 선언 
+                    cmd.Connection = conn;    // 명령변수랑 연결변수 연결!!
+                    cmd.CommandText = "SELECT userID " +    //명령변수에 명령어 입력 -쿼리문
+                                      " FROM dbo.userTbl " +
+                                      " WHERE userID = @userID AND password = @password ";
+                    //아이디
+                    SqlParameter parmUserId = new SqlParameter("@userID", SqlDbType.VarChar, 12);
+                    parmUserId.Value = TxtuserID.Text;
+                    cmd.Parameters.Add(parmUserId);
+                    //비밀번호
+                    SqlParameter parmpassword = new SqlParameter("@password", SqlDbType.VarChar, 12);
+                    parmpassword.Value = TxtPassword.Text;
+                    cmd.Parameters.Add(parmpassword);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    strUserId = reader["userID"] != null ? reader["userID"].ToString() : "";// ?
+
+                    if (strUserId != "")
+                    {
+                        strUserId = reader["userID"].ToString(); //??????????????
+                        MetroMessageBox.Show(this, "접속성공", " 로그인");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "접속실패", "로그인실패", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
-                {
-                    MetroMessageBox.Show(this, "접속실패", "로그인실패", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "로그인오류", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
-
-
-
+                //MetroMessageBox.Show(this, $"Error : {ex.StackTrace}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return;  --> 구지 이렇게 작성할 필요가 없고 StackTrace가 경로를 나타내주는거 같긴한데 
             }
 
 
 
-
         }
+
+
 
         private void TxtuserID_KeyPress(object sender, KeyPressEventArgs e)
         {

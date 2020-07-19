@@ -55,6 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bookrentalshopDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bookrentalshopDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DivForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DivForm.Designer.cs">
+      <DependentUpon>DivForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +81,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentForm.Designer.cs">
+      <DependentUpon>RentForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DivForm.resx">
+      <DependentUpon>DivForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +105,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RentForm.resx">
+      <DependentUpon>RentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bookrentalshopDBDataSet.xsc">
+      <DependentUpon>bookrentalshopDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bookrentalshopDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bookrentalshopDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bookrentalshopDBDataSet.xss">
+      <DependentUpon>bookrentalshopDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

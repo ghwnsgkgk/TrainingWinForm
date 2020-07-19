@@ -30,6 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.메인관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.구분코드관리DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.사용자관리UToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.회원관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.책관리BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.책대여관리RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,9 +52,47 @@
             // 
             // 메인관리MToolStripMenuItem
             // 
+            this.메인관리MToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.구분코드관리DToolStripMenuItem,
+            this.사용자관리UToolStripMenuItem,
+            this.회원관리MToolStripMenuItem,
+            this.책관리BToolStripMenuItem,
+            this.책대여관리RToolStripMenuItem});
             this.메인관리MToolStripMenuItem.Name = "메인관리MToolStripMenuItem";
             this.메인관리MToolStripMenuItem.Size = new System.Drawing.Size(127, 29);
             this.메인관리MToolStripMenuItem.Text = "메인관리(&M)";
+            // 
+            // 구분코드관리DToolStripMenuItem
+            // 
+            this.구분코드관리DToolStripMenuItem.Name = "구분코드관리DToolStripMenuItem";
+            this.구분코드관리DToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.구분코드관리DToolStripMenuItem.Text = "구분코드관리(&D)";
+            this.구분코드관리DToolStripMenuItem.Click += new System.EventHandler(this.구분코드관리DToolStripMenuItem_Click);
+            // 
+            // 사용자관리UToolStripMenuItem
+            // 
+            this.사용자관리UToolStripMenuItem.Name = "사용자관리UToolStripMenuItem";
+            this.사용자관리UToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.사용자관리UToolStripMenuItem.Text = "사용자관리(&U)";
+            // 
+            // 회원관리MToolStripMenuItem
+            // 
+            this.회원관리MToolStripMenuItem.Name = "회원관리MToolStripMenuItem";
+            this.회원관리MToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.회원관리MToolStripMenuItem.Text = "회원관리(&M)";
+            // 
+            // 책관리BToolStripMenuItem
+            // 
+            this.책관리BToolStripMenuItem.Name = "책관리BToolStripMenuItem";
+            this.책관리BToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.책관리BToolStripMenuItem.Text = "책관리(&B)";
+            // 
+            // 책대여관리RToolStripMenuItem
+            // 
+            this.책대여관리RToolStripMenuItem.Name = "책대여관리RToolStripMenuItem";
+            this.책대여관리RToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.책대여관리RToolStripMenuItem.Text = "책대여관리(&R)";
+            this.책대여관리RToolStripMenuItem.Click += new System.EventHandler(this.책대여관리RToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -76,6 +119,11 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 메인관리MToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 구분코드관리DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 사용자관리UToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 회원관리MToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 책관리BToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 책대여관리RToolStripMenuItem;
     }
 }
 
